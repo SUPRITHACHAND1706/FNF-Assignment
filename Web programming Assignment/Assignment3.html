@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4a4a4a;
+            margin: 20px;
+        }
+        .container {
+            background: #cfa06c;
+            max-width: 400px;
+            margin: 60px auto;
+            padding: 30px 25px 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        }
+        h2 {
+            text-align: center;
+            color: #4a4a4a;
+            margin-bottom: 18px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px 12px;
+            margin: 10px 0 18px 0;
+            box-sizing: border-box;
+            background: #f9f6f2;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px 0 0 0;
+            width: 200px;
+            display: block;
+            border-radius: 8px;
+        }
+        button:hover {
+            background: #6b4f1d;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: brown;
+            padding: 10px 0;
+            border: 2px solid #6b4f1d;
+            background: #fffbe6;
+            min-height: 32px;
+            text-align: center;
+            border-radius: 8px;
+        }
+    </style>
+    <script>
+        function encryptText(text) {
+            const sentence = "The quick brown fox jumps over the lazy dog.";
+            const words = sentence.replace('.', '').split(' ');
+            let enc = "";
+
+            for (let i = 0; i < text.length; i++) {
+                let find = text[i];
+                let found = false;
+
+                if (find === " ") {
+                    enc += "_";
+                    continue;
+                }
+
+                for (let w = 0; w < words.length; w++) {
+                    let word = words[w];
+                    for (let l = 0; l < word.length; l++) {
+                        if (word[l] === find) {
+                            enc += `${w}${l}`;
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found) break;
+                }
+                if (!found) {
+                    enc += "-1";
+                }
+            }
+
+            return enc;
+        }
+        window.addEventListener("load", function () {
+            document.getElementById("Btn").addEventListener("click", function () {
+                const input = document.getElementById("inputText").value;
+                const output = encryptText(input);
+                document.getElementById("output").textContent = output;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="inputText" placeholder="Enter text to encrypt">
+        <button id="Btn">Encrypt</button>
+        <div id="output"></div>
+    </div>
+</body>
+</html>

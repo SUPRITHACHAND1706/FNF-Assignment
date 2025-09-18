@@ -1,0 +1,87 @@
+<!-- signup.html -->
+
+<div class="signup-container">
+
+  <h2>Sign Up</h2>
+
+  <form (submit)="signup(); $event.preventDefault();">
+
+    <div>
+
+      <label for="username">Username:</label>
+
+      <input
+
+        type="text"
+
+        id="username"
+
+        [(ngModel)]="username"
+
+        name="username"
+
+        required
+
+        autocomplete="username"
+
+      />
+
+    </div>
+
+    <div>
+
+      <label for="password">Password:</label>
+
+      <input
+
+        type="password"
+
+        id="password"
+
+        [(ngModel)]="password"
+
+        name="password"
+
+        required
+
+        autocomplete="new-password"
+
+      />
+
+    </div>
+
+    <div>
+
+      <label for="address">Address:</label>
+
+      <input
+
+        type="text"
+
+        id="address"
+
+        [(ngModel)]="address"
+
+        name="address"
+
+        required
+
+        autocomplete="address"
+
+      />
+
+    </div>
+
+    <button type="submit">Register</button>
+
+  </form>
+  <a routerLink="/login">Already have an account? Login</a>
+  <a routerLink="/food-list">See Restaurants</a>
+
+  <div *ngIf="successMessage">
+
+    <p style="color: green">{{ successMessage }}</p>
+
+  </div>
+
+</div>

@@ -1,0 +1,19 @@
+<!-- <input type="text" [(ngModel)]="searchText" placeholder="Search">
+
+<div *ngFor="let food of foods | filter:searchText">
+  {{ food.name }}
+</div> -->
+
+
+<div class="food-list-container">
+  <h2>Available Restaurants & Foods</h2>
+  <div *ngFor="let restaurant of restaurants">
+    <h3>{{ restaurant.name }}</h3>
+    <ul>
+      <li *ngFor="let food of restaurant.foods">
+        <strong>{{ food.name }}</strong>: ₹{{ food.price }}
+      </li>
+    </ul>
+  </div>
+  <a routerLink="/checkout">Go to Checkout</a>
+</div>
